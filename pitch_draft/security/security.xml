@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id ="root_group_pitch" model ="ir.module.category">
+        <field name="name">Pitch Draft</field>
+    </record>
+
+    <record id="group_banda" model="res.groups">
+        <field name="name">Banda</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+    </record>
+
+    <record id="group_patrosinador" model="res.groups">
+        <field name="name">Patrosinador</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+        
+    </record>
+
+    <record id="group_eva_1" model="res.groups">
+        <field name="name">Evaluador 1</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+    </record>
+
+    <record id="group_eva_2" model="res.groups">
+        <field name="name">Evaluador 2</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+    </record>
+
+    <record id="group_eva_3" model="res.groups">
+        <field name="name">Evaluador 3</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+    </record>
+
+    <record id="group_eva_4" model="res.groups">
+        <field name="name">Evaluador 4</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>
+    </record>
+
+    <record id="group_admin" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="pitch_draft.root_group_pitch"/>        
+    </record>
+
+</odoo>

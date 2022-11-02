@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_band" model="ir.actions.act_window">
+        <field name="name">Pitch Draft</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">band</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a Pitch Draft
+          </p><p>
+          
+          </p>
+        </field>
+    </record>
+
+    <record id="action_sponsor" model="ir.actions.act_window">
+      <field name="name">Patrocinadores</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sponsor</field>
+      <field name="view_mode">kanban,tree,form</field>
+      <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a Patrocinadores
+        </p><p>
+        
+        </p>
+      </field>
+  </record>
+
+      <record id="action_stage_band" model="ir.actions.act_window">
+        <field name="name">Estado de bandas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stage.band</field>
+        <field name="view_mode">tree</field>
+        <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a Estado de bandas
+          </p><p>
+          
+          </p>
+        </field>
+    </record>
+
+    <record id="action_sponsor_tags" model="ir.actions.act_window">
+      <field name="name">Etiquetas de patrocinadores</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sponsor.tags</field>
+      <field name="view_mode">tree</field>
+      <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a Etiquetas de patrocinadores
+        </p><p>
+        
+        </p>
+      </field>
+  </record>
+
+    <record id="action_band_tags" model="ir.actions.act_window">
+      <field name="name">Etiquetas de bandas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">band.tags</field>
+      <field name="view_mode">tree</field>
+      <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a Etiquetas de bandas
+        </p><p>
+        
+        </p>
+      </field>
+  </record>
+
+    <record id="action_stage_sponsor" model="ir.actions.act_window">
+      <field name="name">Estado de patrocinador</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">stage.sponsor</field>
+      <field name="view_mode">tree</field>
+      <!-- <field name="search_view_id" ref="base.view_res_partner_filter"/> -->
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a Estado de patrocinador
+        </p><p>
+        
+        </p>
+      </field>
+    </record>
+
+
+
+  
+
+    <menuitem name="Pitch Draft"
+        id="band_root"
+        sequence="20"
+        />
+
+        <!-- groups="base.group_user,base.group_partner_manager" -->
+    <menuitem id="menu_band2"
+        name="Bandas"
+        action="action_band"
+        parent="band_root"
+        groups="pitch_draft.group_banda,pitch_draft.group_admin,pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_patrosinador"      
+        sequence="3"/>
+
+    <menuitem id="menu_sponsor"
+        name="Patrocinador"
+        action="action_sponsor"
+        parent="band_root"
+        groups="pitch_draft.group_patrosinador,pitch_draft.group_admin,pitch_draft.group_banda"
+        sequence="3"/>
+
+    <menuitem id="menu_configuration"
+        name="Configuración"
+        parent="band_root"
+        groups="pitch_draft.group_admin"
+        sequence="4"/>
+
+    <menuitem id="menu_stage_band"
+        name="Estado de bandas"
+        action="action_stage_band"
+        parent="menu_configuration"
+        sequence="1"/>
+
+    
+
+    <menuitem id="menu_band_tags"
+        name="Etiquetas de bandas"
+        action="action_band_tags"
+        parent="menu_configuration"
+        sequence="2"/>
+    
+    <menuitem id="menu_stage_sponsor"
+        name="Estado de patrocinadores"
+        action="action_stage_sponsor"
+        parent="menu_configuration"
+        sequence="3"/>
+      
+    <menuitem id="menu_sponsor_tags"
+        name="Etiquetas de patrocinadores"
+        action="action_sponsor_tags"
+        parent="menu_configuration"
+        sequence="4"/>
+        
+
+
+</odoo>

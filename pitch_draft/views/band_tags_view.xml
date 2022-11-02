@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_band_tags_tree" model="ir.ui.view">
+            <field name="name">band.tags.tree</field>
+            <field name="model">band.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Bandas" editable="bottom">
+                    <field name="name" required="1"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

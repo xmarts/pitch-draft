@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_stage_sponsor_tree" model="ir.ui.view">
+            <field name="name">stage.sponsor.tree</field>
+            <field name="model">stage.sponsor</field>
+            <field name="arch" type="xml">
+                <tree string="patrosinador" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" 
+                    required="1"
+                    />
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

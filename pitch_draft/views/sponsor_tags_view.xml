@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sponsor_tags_tree" model="ir.ui.view">
+            <field name="name">sponsor.tags.tree</field>
+            <field name="model">sponsor.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Patrosinador" editable="bottom">
+                    <field name="name" required="1"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

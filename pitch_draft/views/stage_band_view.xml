@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_stage_band_tree" model="ir.ui.view">
+            <field name="name">stage.band.tree</field>
+            <field name="model">stage.band</field>
+            <field name="arch" type="xml">
+                <tree string="patrosinador" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" 
+                    required="1"
+                    />
+                    <field name="band_ids" widget="many2many_tags" options="{'color_field': 'color'}" invisible="1"/>
+                    <field name="fold"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
