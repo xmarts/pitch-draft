@@ -31,28 +31,36 @@
                                 </div>
                         <group name="gruoup_gene">
                           <group name="group_left">
-                            <field name="partner_id"/>
+                            <field name="partner_id" required="1"/>
                             <field name="partner_phone" widget="phone" options="{'enable_sms': True}"/>
                             <field name="partner_email" widget="email"/>
                           </group>
                           <group name="group_right">
                             <field name="band_tags_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                            <field name="que_ofrece"/>
+                            <field name="que_ofrece" required="1"/>
                           </group>
                         </group>
                         <notebook>
                             <page string="Información General" name="information_gene">
                               <group name="group_0">
                                 <group name="group_0_1" string="Redes">
-                                  <field name="facebook" string="Facebook"/>
-                                  <field name="instagram" string="Instagram"/>
-                                  <field name="tik_tok" string="Tik Tok"/>
-                                  <field name="youtube" string="Youtube"/>
-                                  <field name="website" string="Website"/>
+                                  <field name="facebook" string="Facebook" widget='url'/>
+                                  <field name="instagram" string="Instagram" widget='url'/>
+                                  <field name="tik_tok" string="Tik Tok" widget='url'/>
+                                  <field name="youtube" string="Youtube" widget='url'/>
+                                  <field name="website" string="Website" widget='url'/>
+                                  <field name="video_envivo" widget='url'/>
                                   <field name="liga_informacin_extra" string="Liga información extra"/>
+                                  <field name="cargar_presskit" filename="cargar_presskit_file_name"/>
+                                  <field name="cargar_presskit_file_name" invisible="1"/>
+                                  <field name="cargar_rider" filename="cargar_rider_file_name"/>
+                                  <field name="cargar_rider_file_name" invisible="1"/>
                                 </group>
                                 <group name="group_0_2" string="Info">
-                                  <field name="informacin_general" string="Información General"/>
+                                  <field name="informacin_general" string="Descripción del proyecto" required="1"/>
+                                  <field name="tenido_patrosinio"/>
+                                  <field name="marca" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)]}"/>
+                                  <field name="marca_detallee" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)]}"/>
                                   <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto1" string="Foto 1"/>
                                   <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto2" string="Foto 2"/>
                                   <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto3" string="Foto 3"/>
@@ -60,7 +68,7 @@
                                 </group>
                               </group>
                             </page>
-                            <page string="Comentarios" name="comments" groups="pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_banda">
+                            <page string="Comentarios" name="comments" groups="pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_banda,pitch_draft.group_admin">
                               <group name="group_1">
                                 <group name="group_1_1">
                                   <field name="evaluador_1" string="Evaluador 1" groups="pitch_draft.group_eva_1,pitch_draft.group_banda"/>
@@ -71,6 +79,20 @@
                                     <field name="evaluador_4" string="Evaluador 4" groups="pitch_draft.group_eva_4,pitch_draft.group_banda"/>
                                 </group>
                               </group>
+                              <field name="evaluation_ids" widget="one2many" nolabel="1">
+                                <tree name="evaluation_ids_tree" editable="bottom" no_open="1">
+                                    <field name="user_id" />
+                                    <field name="comentario" />
+                                    <field name="puntacion" sum="puntacion"/>                                    
+                                </tree>
+                                <form name="evaluation_ids_form">
+                                    <group>
+                                        <field name="user_id" />
+                                        <field name="comentario" />
+                                        <field name="puntacion" /> 
+                                    </group>
+                                </form>
+                            </field>
                             </page>
                           </notebook>
                       </sheet>

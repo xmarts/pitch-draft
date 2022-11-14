@@ -57,6 +57,9 @@ class Band(models.Model):
     website = fields.Char(
         string="Correo electrónico?"
     )
+    video_envivo = fields.Html(
+        string="Video en vivo"
+    )
     liga_informacin_extra = fields.Html(
         string="Liga información extra"
     )
@@ -85,6 +88,28 @@ class Band(models.Model):
 
     que_ofrece = fields.Text(
         string="Que puede ofrecer que los hace únicos"
+    )
+
+    evaluation_ids = fields.One2many('evaluation', 'band_id')
+
+    cargar_presskit = fields.Binary(string="Carga Presskt")
+
+    cargar_presskit_file_name = fields.Char('File Name')
+    
+    cargar_rider = fields.Binary(string="Carga Rider")
+
+    cargar_rider_file_name = fields.Char('File Name')
+
+    tenido_patrosinio = fields.Boolean(
+        string="Han tenido patrocinio previamente"
+    )
+
+    marca = fields.Char(
+        string="Con que marca(s)"
+    )
+
+    marca_detallee = fields.Char(
+        string="En que consistio el intercambio"
     )
 
     # -------------------- FUNCTIONS --------------------------------#
