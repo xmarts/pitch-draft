@@ -1,0 +1,22 @@
+<odoo noupdate="1">
+
+    <record id="stage_in_erraser" model="stage.band">
+        <field name="name">Borrador</field>
+    </record>
+    <record id="stage_signed" model="stage.band">
+        <field name="name">Inscrita</field>
+    </record>
+    <record id="stage_finish" model="stage.band">
+        <field name="name">Clasificada</field>
+    </record>
+    <record id="stage_in_eval" model="stage.band">
+        <field name="name">Evaluada</field>
+    </record>
+    <record id="stage_select" model="stage.band">
+        <field name="name">Seleccionada</field>
+    </record>
+    <record id="stage_not_select" model="stage.band">
+        <field name="name">No Seleccionada</field>
+    </record>
+    
+</odoo>

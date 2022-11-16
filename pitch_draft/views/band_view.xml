@@ -17,6 +17,7 @@
             <field name="arch" type="xml">
                 <form string="Bandas">
                     <header>
+                        <button name="action_signed" type="object" class="btn-primary" string="Inscribir" attrs="{'invisible': [('control_band', '=', True)]}"/>
                         <field name="stage_band_id" widget="statusbar" options="{'clickable': '1'}"/>
                       </header>
                       <sheet string="Bandas">
@@ -38,6 +39,7 @@
                           <group name="group_right">
                             <field name="band_tags_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="que_ofrece" required="1"/>
+                            <field name="control_band" invisible='1'/>
                           </group>
                         </group>
                         <notebook>
@@ -50,6 +52,7 @@
                                   <field name="youtube" string="Youtube" widget='url'/>
                                   <field name="website" string="Website" widget='url'/>
                                   <field name="video_envivo" widget='url'/>
+                                  <field name="spotify" widget='url'/>
                                   <field name="liga_informacin_extra" string="Liga información extra"/>
                                   <field name="cargar_presskit" filename="cargar_presskit_file_name"/>
                                   <field name="cargar_presskit_file_name" invisible="1"/>
@@ -69,7 +72,7 @@
                               </group>
                             </page>
                             <page string="Comentarios" name="comments" groups="pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_banda,pitch_draft.group_admin">
-                              <group name="group_1">
+                              <!-- <group name="group_1">
                                 <group name="group_1_1">
                                   <field name="evaluador_1" string="Evaluador 1" groups="pitch_draft.group_eva_1,pitch_draft.group_banda"/>
                                   <field name="evaluador_2" string="Evaluador 2" groups="pitch_draft.group_eva_2,pitch_draft.group_banda"/>
@@ -78,7 +81,7 @@
                                     <field name="evaluador_3" string="Evaluador 3" groups="pitch_draft.group_eva_3,pitch_draft.group_banda"/>
                                     <field name="evaluador_4" string="Evaluador 4" groups="pitch_draft.group_eva_4,pitch_draft.group_banda"/>
                                 </group>
-                              </group>
+                              </group> -->
                               <field name="evaluation_ids" widget="one2many" nolabel="1">
                                 <tree name="evaluation_ids_tree" editable="bottom" no_open="1">
                                     <field name="user_id" />

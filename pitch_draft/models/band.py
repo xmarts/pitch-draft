@@ -16,6 +16,7 @@ class Band(models.Model):
         'stage.band',
         string='Estado bandas',
         group_expand='_read_group_stage_ids',
+        default=lambda self: self.env.ref('pitch_draft.stage_in_erraser').id
     )
     kanban_state = fields.Selection(
         selection=[
@@ -111,6 +112,12 @@ class Band(models.Model):
     marca_detallee = fields.Char(
         string="En que consistio el intercambio"
     )
+    control_band = fields.Boolean(
+        string='contro de usuario banda',
+    )
+    spotify = fields.Char(
+        string="Spotify"
+    )
 
     # -------------------- FUNCTIONS --------------------------------#
 
@@ -127,4 +134,10 @@ class Band(models.Model):
         # perform search
         return self.env['stage.band'].search([])
 
+    def action_signed(self):
+        for rec in self:
+            if rec.stage_band_id.name == 'Borrador':
+                stage_id = self.env['stage.band'].search([('name', '=', 'Inscrita')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = True
     #-----------------------------------------------------------------#
