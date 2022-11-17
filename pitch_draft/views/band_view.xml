@@ -17,69 +17,79 @@
             <field name="arch" type="xml">
                 <form string="Bandas">
                     <header>
-                        <button name="action_signed" type="object" class="btn-primary" string="Inscribir" attrs="{'invisible': [('control_band', '=', True)]}"/>
-                        <field name="stage_band_id" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button name="action_signed" type="object" class="btn-primary" string="Inscribir" groups="pitch_draft.group_banda,pitch_draft.group_admin" attrs="{'invisible': ['|','|','|','|', ('control_band', '=', True),('control_class', '=', True),('control_eval', '=', True),('control_selec', '=', True),('control_not_selec', '=', True)]}"/>
+                        <button name="action_classif" type="object" class="btn-primary" string="Clasificada" groups="pitch_draft.group_admin" attrs="{'invisible': [('control_band', '!=', True)]}"/>
+                        <button name="action_evalued" type="object" class="btn-primary" string="Evaluada" groups="pitch_draft.group_admin" attrs="{'invisible': ['|','|', ('control_band', '=', True),('control_class', '!=', True),('control_back', '=', True)]}"/>
+                        <button name="action_selected" type="object" class="btn-primary" string="Seleccionada" groups="pitch_draft.group_admin" attrs="{'invisible': ['|','|','|', ('control_band', '=', True),('control_class', '=', True),('control_back', '=', True),('control_eval', '!=', True)]}"/>
+                        <button name="action_not_selected" type="object" class="btn-primary" string="No Seleccionada" groups="pitch_draft.group_admin" attrs="{'invisible': ['|','|','|', ('control_band', '=', True),('control_class', '=', True),('control_back', '=', True),('control_eval', '!=', True)]}"/>
+                        <button name="action_back" type="object" class="btn-secundary" string="Volver"  groups="pitch_draft.group_admin"/>
+                        <field name="stage_band_id" widget="statusbar" readonly='1'/>
                       </header>
                       <sheet string="Bandas">
-                        <field name="kanban_state" widget="state_selection"/>
+                        <field name="kanban_state" widget="state_selection" readonly='1'/>
                         <widget name="web_ribbon" text="Archivado" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                         <field name="active" invisible="1"/>
                         <field class="oe_avatar" options="{&quot;size&quot;: [0, 90]}" widget="image" name="foto0"/>
                         <div class="oe_title">
                                     <h1>
-                                        <field name="name" required="1" placeholder="Name..."/>
+                                        <field name="name" required="1" placeholder="Name..." attrs="{'readonly': [('control_back', '!=', True)]}"/>
                                     </h1>
                                 </div>
                         <group name="gruoup_gene">
                           <group name="group_left">
-                            <field name="partner_id" required="1" />
-                            <field name="partner_phone" widget="phone" options="{'enable_sms': True}"/>
-                            <field name="partner_email" widget="email"/>
+                            <field name="partner_id" required="1" attrs="{'readonly': [('control_back', '!=', True)]}" />
+                            <field name="partner_phone" widget="phone" options="{'enable_sms': True}" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                            <field name="partner_email" widget="email" attrs="{'readonly': [('control_back', '!=', True)]}"/>
                           </group>
                           <group name="group_right">
-                            <field name="band_tags_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                            <field name="que_ofrece" required="1"/>
+                            <field name="band_tags_ids" widget="many2many_tags" options="{'color_field': 'color'}" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                            <field name="que_ofrece" required="1" attrs="{'readonly': [('control_back', '!=', True)]}"/>
                             <field name="control_band" invisible='1'/>
+                            <field name="control_class" invisible='1'/>
+                            <field name="control_eval" invisible='1'/>
+                            <field name="control_selec" invisible='1'/>
+                            <field name="control_not_selec" invisible='1'/>
+                            <field name="control_back" invisible='1'/>
                           </group>
                         </group>
                         <notebook>
                             <page string="Información General" name="information_gene">
                               <group name="group_0">
                                 <group name="group_0_1" string="Redes">
-                                  <field name="facebook" string="Facebook" widget='url'/>
-                                  <field name="instagram" string="Instagram" widget='url'/>
-                                  <field name="tik_tok" string="Tik Tok" widget='url'/>
-                                  <field name="youtube" string="Youtube" widget='url'/>
-                                  <field name="website" string="Website" widget='url'/>
-                                  <field name="video_envivo" widget='url'/>
-                                  <field name="spotify" widget='url'/>
-                                  <field name="liga_informacin_extra" string="Liga información extra"/>
-                                  <field name="cargar_presskit" filename="cargar_presskit_file_name"/>
+                                  <field name="facebook" string="Facebook" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="instagram" string="Instagram" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="tik_tok" string="Tik Tok" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="youtube" string="Youtube" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="website" string="Website" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="video_envivo" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="spotify" widget='url' attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="liga_informacin_extra" string="Liga información extra" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="cargar_presskit" filename="cargar_presskit_file_name" attrs="{'readonly': [('control_back', '!=', True)]}"/>
                                   <field name="cargar_presskit_file_name" invisible="1"/>
-                                  <field name="cargar_rider" filename="cargar_rider_file_name"/>
-                                  <field name="cargar_rider_file_name" invisible="1"/>
+                                  <field name="cargar_rider" filename="cargar_rider_file_name" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="cargar_rider_file_name" invisible="1" attrs="{'readonly': [('control_back', '!=', True)]}"/>
                                 </group>
                                 <group name="group_0_2" string="Info">
-                                  <field name="informacin_general" string="Descripción del proyecto" required="1"/>
-                                  <field name="tenido_patrosinio"/>
-                                  <field name="marca" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)]}"/>
-                                  <field name="marca_detallee" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)]}"/>
-                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto1" string="Foto 1"/>
-                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto2" string="Foto 2"/>
-                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto3" string="Foto 3"/>
-                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto4" string="Foto 4"/>
+                                  <field name="informacin_general" string="Descripción del proyecto" required="1" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="tenido_patrosinio" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="marca" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)],'readonly': [('control_back', '!=', True)]}"/>
+                                  <field name="marca_detallee" attrs="{'invisible': [('tenido_patrosinio', '=', False)],'required': [('tenido_patrosinio', '=', True)],'readonly': [('control_back', '!=', True)]}"/>
+                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto1" string="Foto 1" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto2" string="Foto 2" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto3" string="Foto 3" attrs="{'readonly': [('control_back', '!=', True)]}"/>
+                                  <field widget="image" options="{&quot;size&quot;: [0, 90]}" name="foto4" string="Foto 4" attrs="{'readonly': [('control_back', '!=', True)]}"/>
                                 </group>
                               </group>
                             </page>
-                            <page string="Comentarios" name="comments" groups="pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_banda,pitch_draft.group_admin">
+                            <page string="Comentarios" name="comments" groups="pitch_draft.group_banda,pitch_draft.group_admin">
                               <!-- <group name="group_1">
                                 <group name="group_1_1">
-                                  <field name="evaluador_1" string="Evaluador 1" groups="pitch_draft.group_eva_1,pitch_draft.group_banda"/>
-                                  <field name="evaluador_2" string="Evaluador 2" groups="pitch_draft.group_eva_2,pitch_draft.group_banda"/>
+                                  <field name="evaluador_1" string="Evaluador 1" groups=",pitch_draft.group_banda"/>
+                                  <field name="evaluador_2" string="Evaluador 2" groups=",pitch_draft.group_banda"/>
                                 </group>
                                 <group name="group_1_2">
-                                    <field name="evaluador_3" string="Evaluador 3" groups="pitch_draft.group_eva_3,pitch_draft.group_banda"/>
-                                    <field name="evaluador_4" string="Evaluador 4" groups="pitch_draft.group_eva_4,pitch_draft.group_banda"/>
+                                    <field name="evaluador_3" string="Evaluador 3" groups=",pitch_draft.group_banda"/>
+                                    <field name="evaluador_4" string="Evaluador 4" groups=",pitch_draft.group_banda"/>
                                 </group>
                               </group> -->
                               <field name="evaluation_ids" widget="one2many" nolabel="1">

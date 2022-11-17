@@ -24,6 +24,5 @@
         'views/sponsor_view.xml',
         'views/stage_band_view.xml',
         'views/stage_sponsor_view.xml',
-        'views/band_group_views.xml',
     ],
 }

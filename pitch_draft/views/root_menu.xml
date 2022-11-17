@@ -110,7 +110,7 @@
         name="Bandas"
         action="action_band"
         parent="band_root"
-        groups="pitch_draft.group_banda,pitch_draft.group_admin,pitch_draft.group_eva_1,pitch_draft.group_eva_2,pitch_draft.group_eva_3,pitch_draft.group_eva_4,pitch_draft.group_patrosinador"      
+        groups="pitch_draft.group_banda,pitch_draft.group_admin,pitch_draft.group_patrosinador"      
         sequence="3"/>
 
     <menuitem id="menu_sponsor"

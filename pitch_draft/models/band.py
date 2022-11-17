@@ -113,10 +113,26 @@ class Band(models.Model):
         string="En que consistio el intercambio"
     )
     control_band = fields.Boolean(
-        string='contro de usuario banda',
+        string='control de usuario banda',
     )
     spotify = fields.Char(
         string="Spotify"
+    )
+    control_class = fields.Boolean(
+        string='control clasificacion',
+    )
+    control_eval = fields.Boolean(
+        string='control evaluacion',
+    )
+    control_selec = fields.Boolean(
+        string='control seleccion',
+    )
+    control_not_selec = fields.Boolean(
+        string='control no seleccion',
+    )
+    control_back = fields.Boolean(
+        string='control volver',
+        default=True
     )
 
     # -------------------- FUNCTIONS --------------------------------#
@@ -140,4 +156,74 @@ class Band(models.Model):
                 stage_id = self.env['stage.band'].search([('name', '=', 'Inscrita')], limit=1)
                 rec.stage_band_id = stage_id.id
                 rec.control_band = True
+                rec.control_class = False
+                rec.control_eval = False
+                rec.control_selec = False
+                rec.control_not_selec = False
+                rec.control_back = False
+
+
+    def action_classif(self):
+        for rec in self:
+            if rec.stage_band_id.name == 'Inscrita':
+                stage_id = self.env['stage.band'].search([('name', '=', 'Clasificada')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = False
+                rec.control_class = True
+                rec.control_eval = False
+                rec.control_selec = False
+                rec.control_not_selec = False
+                rec.control_back = False
+
+
+    def action_evalued(self):
+        for rec in self:
+            if rec.stage_band_id.name == 'Clasificada':
+                stage_id = self.env['stage.band'].search([('name', '=', 'Evaluada')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = False
+                rec.control_class = False
+                rec.control_eval = True
+                rec.control_selec = False
+                rec.control_not_selec = False
+                rec.control_back = False
+
+    
+    def action_selected(self):
+        for rec in self:
+            if rec.stage_band_id.name == 'Evaluada':
+                stage_id = self.env['stage.band'].search([('name', '=', 'Seleccionada')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = False
+                rec.control_class = False
+                rec.control_eval = False
+                rec.control_selec = True
+                rec.control_not_selec = False
+                rec.control_back = False
+
+
+    def action_not_selected(self):
+        for rec in self:
+            if rec.stage_band_id.name == 'Evaluada':
+                stage_id = self.env['stage.band'].search([('name', '=', 'No Seleccionada')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = False
+                rec.control_class = False
+                rec.control_eval = False
+                rec.control_selec = False
+                rec.control_not_selec = True
+                rec.control_back = False
+
+    def action_back(self):
+        for rec in self:
+
+            if not rec.stage_band_id.name == 'Borrador':
+                stage_id = self.env['stage.band'].search([('name', '=', 'Borrador')], limit=1)
+                rec.stage_band_id = stage_id.id
+                rec.control_band = False
+                rec.control_class = False
+                rec.control_eval = False
+                rec.control_selec = False
+                rec.control_not_selec = False
+                rec.control_back = True
     #-----------------------------------------------------------------#

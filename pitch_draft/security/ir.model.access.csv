@@ -1,10 +1,44 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_band0,band0,model_band,,1,1,1,1
+access_band1,band1,model_band,,1,1,1,1
+access_band2,band2,model_band,,1,0,0,0
+access_band3,band3,model_band,,1,0,0,0
+access_band4,band4,model_band,,1,0,0,0
+access_band5,band5,model_band,,1,0,0,0
+access_band6,band6,model_band,,1,0,0,0
+
+
+access_sponsor0,sponsor0,model_sponsor,,1,1,1,1
+access_sponsor1,sponsor1,model_sponsor,,1,1,1,1
+access_sponsor2,sponsor2,model_sponsor,,1,0,0,0
+
+
+access_stage_band0,stage.band0,model_stage_band,,1,1,1,1
+access_stage_band1,stage.band1,model_stage_band,,1,0,0,0
+access_stage_band2,stage.band2,model_stage_band,,1,0,0,0
+access_stage_band3,stage.band3,model_stage_band,,1,0,0,0
+access_stage_band4,stage.band4,model_stage_band,,1,0,0,0
+access_stage_band5,stage.band5,model_stage_band,,1,0,0,0
+
+access_evaluation0,evaluation0,model_evaluation,,1,1,1,1
+
+access_evaluation1,evaluation1,model_evaluation,,1,1,1,1
+access_evaluation2,evaluation2,model_evaluation,,1,0,0,0
+access_evaluation3,evaluation3,model_evaluation,,1,0,0,0
+access_evaluation4,evaluation4,model_evaluation,,1,0,0,0
+access_evaluation5,evaluation5,model_evaluation,,1,0,0,0
+access_evaluation6,evaluation6,model_evaluation,,1,0,0,0
+
+
+
+
+
+
+
+
+
 access_band0,band0,model_band,pitch_draft.group_banda,1,1,1,1
 access_band1,band1,model_band,pitch_draft.group_admin,1,1,1,1
-access_band2,band2,model_band,pitch_draft.group_eva_1,1,0,0,0
-access_band3,band3,model_band,pitch_draft.group_eva_2,1,0,0,0
-access_band4,band4,model_band,pitch_draft.group_eva_3,1,0,0,0
-access_band5,band5,model_band,pitch_draft.group_eva_4,1,0,0,0
 access_band6,band6,model_band,pitch_draft.group_patrosinador,1,0,0,0
 
 
@@ -15,19 +49,13 @@ access_sponsor2,sponsor2,model_sponsor,pitch_draft.group_banda,1,0,0,0
 
 access_stage_band0,stage.band0,model_stage_band,pitch_draft.group_admin,1,1,1,1
 access_stage_band1,stage.band1,model_stage_band,pitch_draft.group_banda,1,0,0,0
-access_stage_band2,stage.band2,model_stage_band,pitch_draft.group_eva_1,1,0,0,0
-access_stage_band3,stage.band3,model_stage_band,pitch_draft.group_eva_2,1,0,0,0
-access_stage_band4,stage.band4,model_stage_band,pitch_draft.group_eva_3,1,0,0,0
-access_stage_band5,stage.band5,model_stage_band,pitch_draft.group_eva_4,1,0,0,0
+
 
 access_evaluation0,evaluation0,model_evaluation,pitch_draft.group_admin,1,1,1,1
 
 access_evaluation1,evaluation1,model_evaluation,pitch_draft.group_admin,1,1,1,1
 access_evaluation2,evaluation2,model_evaluation,pitch_draft.group_banda,1,0,0,0
-access_evaluation3,evaluation3,model_evaluation,pitch_draft.group_eva_1,1,0,0,0
-access_evaluation4,evaluation4,model_evaluation,pitch_draft.group_eva_2,1,0,0,0
-access_evaluation5,evaluation5,model_evaluation,pitch_draft.group_eva_3,1,0,0,0
-access_evaluation6,evaluation6,model_evaluation,pitch_draft.group_eva_4,1,0,0,0
+
 
 access_sponsor_tags,sponsor.tags,model_sponsor_tags,,1,1,1,1
 access_band_tags,band.tags,model_band_tags,,1,1,1,1
